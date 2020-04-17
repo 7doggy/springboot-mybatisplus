@@ -1,2 +1,10 @@
 # Project exclude paths
 /target/
+/.idea/.gitignore
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/compiler.xml
+/.idea/dbnavigator.xml
+/.idea/encodings.xml
+/.idea/misc.xml
+/.idea/codeStyles/Project.xml
+/springboot-mybatisplus.iml
