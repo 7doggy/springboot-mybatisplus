@@ -1,6 +1,5 @@
 package com.springboot.mybatisplus.controller;
 
-import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.springboot.mybatisplus.entity.User;
 import com.springboot.mybatisplus.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,15 @@ public class UserController {
         return list;
     }
 
-
+    @GetMapping("/saveUser")
+    public String saveUser() {
+        User user = new User();
+        user.setId(100L);
+        user.setName("Lichun");
+        user.setAge(11);
+        user.setEmail("run200@163.com");
+        userService.save(user);
+        return "ok";
+    }
 
 }
