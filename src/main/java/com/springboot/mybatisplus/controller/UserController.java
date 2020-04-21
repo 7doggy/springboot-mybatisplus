@@ -1,5 +1,7 @@
 package com.springboot.mybatisplus.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.springboot.mybatisplus.entity.User;
 import com.springboot.mybatisplus.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,13 @@ public class UserController {
     @GetMapping("/getUser")
     public List<User> getUser() {
         List<User> list = userService.list();
+        return list;
+    }
+
+    @GetMapping("/getUserPage")
+    public IPage<User> getUserPage() {
+        Page<User> page = new Page<User>(1,2);
+        IPage<User> list = userService.page(page);
         return list;
     }
 
