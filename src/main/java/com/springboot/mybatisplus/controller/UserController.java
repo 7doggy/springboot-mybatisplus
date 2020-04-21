@@ -34,7 +34,7 @@ public class UserController {
     @GetMapping("/getUserPerson")
     public User getUserPerson() {
         LambdaQueryWrapper<User> objectLambdaQueryWrapper = Wrappers.lambdaQuery(User.class);
-        objectLambdaQueryWrapper.eq(User::getName, "Jone");
+        objectLambdaQueryWrapper.eq(User::getName, "Jone").eq(User::getAge, 18);
         User user = userService.getOne(objectLambdaQueryWrapper);
         return user;
     }
