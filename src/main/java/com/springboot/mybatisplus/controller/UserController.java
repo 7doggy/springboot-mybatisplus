@@ -29,6 +29,13 @@ public class UserController {
         return list;
     }
 
+    @GetMapping("/getUserPerson")
+    public IPage<User> getUserPerson() {
+        Page<User> page = new Page<User>(1,2);
+        IPage<User> list = userService.page(page);
+        return list;
+    }
+
     @GetMapping("/saveUser")
     public String saveUser() {
         User user = new User();
