@@ -1,6 +1,8 @@
 package com.springboot.mybatisplus.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.springboot.mybatisplus.entity.User;
 import com.springboot.mybatisplus.service.IUserService;
@@ -30,10 +32,11 @@ public class UserController {
     }
 
     @GetMapping("/getUserPerson")
-    public IPage<User> getUserPerson() {
-        Page<User> page = new Page<User>(1,2);
-        IPage<User> list = userService.page(page);
-        return list;
+    public User getUserPerson() {
+        LambdaQueryWrapper<User> objectLambdaQueryWrapper = Wrappers.lambdaQuery(User.class);
+        objectLambdaQueryWrapper.eq(User::getName, "Jone");
+        User user = userService.getOne(objectLambdaQueryWrapper);
+        return user;
     }
 
     @GetMapping("/saveUser")
